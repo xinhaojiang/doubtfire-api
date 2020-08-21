@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_041946) do
+ActiveRecord::Schema.define(version: 2020_08_21_010718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_041946) do
     t.integer "capacity"
     t.integer "campus_id"
     t.integer "tutorial_stream_id"
+    t.integer "meeting_duration", default: 60, null: false
     t.index ["campus_id"], name: "index_tutorials_on_campus_id"
     t.index ["tutorial_stream_id"], name: "index_tutorials_on_tutorial_stream_id"
     t.index ["unit_id"], name: "index_tutorials_on_unit_id"
