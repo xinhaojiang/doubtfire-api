@@ -5,7 +5,7 @@ require 'user_serializer'
 
 class TutorialSerializer < ActiveModel::Serializer
   attributes :id, :meeting_day, :meeting_time, :meeting_location, :abbreviation, :campus_id, :capacity, :num_students,
-             :tutorial_stream
+             :tutorial_stream, :meeting_duration
 
   def tutorial_stream
     object.tutorial_stream.abbreviation unless object.tutorial_stream.nil?

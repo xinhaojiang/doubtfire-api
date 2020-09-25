@@ -20,6 +20,7 @@ module Api
         optional :campus_id, type: Integer, desc: 'Id of the campus'
         optional :capacity, type: Integer, desc: 'Capacity of the tutorial'
         optional :meeting_time, type: String, desc: 'Time of the tutorial'
+        optional :meeting_duration, type: Integer, desc: 'Duration of the tutorial in minutes'
       end
     end
     put '/tutorials/:id' do
@@ -39,7 +40,8 @@ module Api
                                                           :meeting_day,
                                                           :meeting_time,
                                                           :campus_id,
-                                                          :capacity
+                                                          :capacity,
+                                                          :meeting_duration
                                                         )
 
       if tut_params[:tutor_id]
