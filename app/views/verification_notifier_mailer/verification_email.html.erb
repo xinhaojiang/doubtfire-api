@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @tutor.name %></h1>
+    <p>
+      A student you tutor has an audio file flagged for review: <%= @student.first_name %>.<br>
+    </p>
+    <p>
+      This file ... was ranked at a confidence rating of only ...% and thus we suggest you rview this to ensure the respondant is the correct student in question.
+    </p>
+  </body>
+</html>
