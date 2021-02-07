@@ -1,4 +1,6 @@
 ![Doubtfire Logo](http://puu.sh/lyClF/fde5bfbbe7.png)
+![Ruby CI](https://github.com/OnTrack-UG-Squad/doubtfire-api/workflows/Ruby%20CI/badge.svg)
+![CodeQL](https://github.com/OnTrack-UG-Squad/doubtfire-api/workflows/CodeQL/badge.svg)
 
 # Doubtfire API  [![Build Status](https://travis-ci.org/doubtfire-lms/doubtfire-api.svg?branch=development)](https://travis-ci.org/doubtfire-lms/doubtfire-api) [![CircleCI](https://circleci.com/gh/doubtfire-lms/doubtfire-api/tree/development.svg?style=svg)](https://circleci.com/gh/doubtfire-lms/doubtfire-api/tree/development)
 
