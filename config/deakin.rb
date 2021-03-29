@@ -458,6 +458,8 @@ class DeakinInstitutionSettings
                 row:            enrolment
               }
 
+              logger.debug(row_data)
+
               # Record details for students already enrolled to work with multi-units
               if row_data[:enrolled]
                 already_enrolled[row_data[:username]] = true
@@ -513,10 +515,11 @@ class DeakinInstitutionSettings
     tp = unit.teaching_period
 
     # url = "#{@star_url}/star-#{tp.year}/rest/students/allocated"
-    url = "#{@star_url}/even/rest/students/allocated"
+    server = unit.start_date.year % 2 == 0 ? 'even' : 'odd'
+    url = "#{@star_url}/#{server}/rest/students/allocated"
 
     unit.tutorial_streams.each do |tutorial_stream|
-      logger.info("Fetching #{tutorial_stream} from #{url}")
+      logger.info("Fetching #{tutorial_stream.abbreviation} from #{url}")
       response = RestClient.post(url, {username: @star_user, password: @star_secret, where_clause:"subject_code LIKE '#{unit.code}%' AND activity_group_code LIKE '#{tutorial_stream.abbreviation}'"})
 
       if response.code == 200
