@@ -1846,7 +1846,8 @@ class Unit < ActiveRecord::Base
         quality_pts: t.quality_pts,
         num_new_comments: t.number_unread,
         similar_to_count: plagiarism_counts[t.task_id],
-        pinned: t.pinned 
+        pinned: t.pinned,
+        has_extensions: t.has_extensions
       }
     end
   end
@@ -1873,6 +1874,7 @@ class Unit < ActiveRecord::Base
         'tasks.id', 
         "SUM(case when crr.user_id is null AND NOT task_comments.id is null then 1 else 0 end) as number_unread",
         'COUNT(distinct task_pins.task_id) != 0 as pinned',
+        "SUM(case when task_comments.date_extension_assessed IS NULL AND task_comments.type = 'ExtensionComment' AND NOT task_comments.id IS NULL THEN 1 ELSE 0 END) > 0 as has_extensions",
         'project_id', 
         'tasks.id as task_id',
         'task_definition_id', 
@@ -2121,7 +2123,7 @@ class Unit < ActiveRecord::Base
       working_on_it:      0.0,
       need_help:          0.0,
       redo:               0.1,
-      do_not_resubmit:    0.1,
+      feedback_exceeded:    0.1,
       fix_and_resubmit:   0.3,
       time_exceeded:      0.5,
       ready_to_mark:      0.7,
