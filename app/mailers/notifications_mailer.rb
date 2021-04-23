@@ -1,5 +1,25 @@
 class NotificationsMailer < ActionMailer::Base
 
+    # New added function for notification of sound verification failure 
+    def sound_verification_failed(project)
+      return nil if project.nil?
+  
+      # Get student from project
+      @student = project.student
+      
+      # Get tutor from project
+      @tutor = project.main_convenor_user
+  
+      # email subject
+      @subject = 'Sound Verification Failed'
+  
+      # get the today date with yyyy-mm-dd format
+      @date = Time.now.strftime("%Y-%m-%d")
+  
+      # send the email out
+      mail(to: @tutor.email, subject: @subject)
+    end
+
   def add_general
     @doubtfire_host = Doubtfire::Application.config.institution[:host]
     @doubtfire_product_name = Doubtfire::Application.config.institution[:product_name]
